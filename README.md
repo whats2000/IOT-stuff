@@ -1,2 +1,2 @@
 # IOT-stuff
-A place pit some random stuff for IOT project
+A place put some random stuff for IOT project
