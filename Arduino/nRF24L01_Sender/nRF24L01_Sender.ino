@@ -4,7 +4,7 @@
 #include "RF24.h"
 #include "nRF24L01.h"
 
-RF24 radio(9, 8);  // 指定 Arduino Nano 腳位對應 nRF24L01 之 (CE, CSN)
+RF24 radio(7, 8);  // 指定 Arduino Nano 腳位對應 nRF24L01 之 (CE, CSN)
 const byte address[6] = "00001";  // 節點位址為 5 bytes + \0=6 bytes
 
 int counter = 0;  // Hello 計數器
@@ -24,5 +24,5 @@ void loop() {
     Serial.println(text);
     radio.write(&text, sizeof(text));  // 將字串寫入傳送緩衝器
     ++counter;
-    // delay(1000);
+    delay(100);
 }
