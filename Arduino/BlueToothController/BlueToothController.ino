@@ -19,7 +19,27 @@ void setup() {
 
 void loop() {
   controller.update();
-  controller.printDebugValues();
+  
+  int x = controller.getX();
+  int y = controller.getY();
+  int enter = controller.getButtonState(BUTTON_DOWN);
+  int esc = controller.getButtonState(BUTTON_RIGHT);
+  int shift = controller.getButtonState(BUTTON_LEFT);
+  int fire = controller.getButtonState(BUTTON_UP);
 
-  delay(500);
+  // Print the joystick and button states in a formatted string
+  Serial.print("X:");
+  Serial.print(x);
+  Serial.print(",Y:");
+  Serial.print(y);
+  Serial.print(",Enter:");
+  Serial.print(enter);
+  Serial.print(",Esc:");
+  Serial.print(esc);
+  Serial.print(",Shift:");
+  Serial.print(shift);
+  Serial.print(",Fire:");
+  Serial.println(fire);
+
+  delay(100);
 }

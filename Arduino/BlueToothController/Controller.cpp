@@ -36,7 +36,7 @@ void Controller::printDebugValues() {
   Serial.print("X: ");
   Serial.print(_xValue);
   Serial.print(" | Y: ");
-  Serial.println(_yValue);
+  Serial.print(_yValue);
 
   Serial.print("Up: ");
   Serial.print(digitalRead(_buttonUp));

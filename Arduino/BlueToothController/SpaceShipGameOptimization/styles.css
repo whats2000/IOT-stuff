@@ -1,0 +1,389 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("static/images/Background.jpg"); /* Set the background image */
+    background-size: cover; /* Cover the entire viewport with a fixed-size image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image within the viewport */
+}
+
+canvas {
+    display: block;
+}
+
+#score-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    color: white;
+    display: flex; /* Use flex display to make the elements inline */
+    align-items: center; /* Center vertically within the container */
+}
+
+#scoreboard {
+    font-size: 36px;
+    margin-right: 20px; /* Add spacing between the elements */
+    /* Add any other necessary styles */
+}
+
+#shield {
+    font-size: 36px;
+    /* Add any other necessary styles */
+}
+
+.instructions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.instructions a {
+    text-decoration: none;
+    color: #ccc; /* Default color for references */
+}
+
+.instructions a:hover {
+    color: #999; /* Color on hover for references */
+}
+
+.instructions .start-button {
+    font-weight: bold;
+    background: linear-gradient(45deg, #f06, #f90, #f60, #0f6, #06f, #90f, #f06);
+    background-size: 600% 600%;
+    color: transparent;
+    -webkit-background-clip: text;
+    animation: rainbowEffect 6s linear infinite;
+}
+
+@keyframes rainbowEffect {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+
+.instructions p {
+    font-size: 18px; /* Font size for regular instruction paragraphs */
+}
+
+.instructions .reference {
+    color: #999999;
+    font-size: 10px; /* Font size for reference paragraphs */
+    margin-top: 5px; /* Add some spacing between reference paragraphs */
+}
+
+/* Define a keyframes animation for rainbow color */
+@keyframes rainbow {
+    0% {
+        color: red;
+    }
+    14% {
+        color: orange;
+    }
+    28% {
+        color: yellow;
+    }
+    42% {
+        color: green;
+    }
+    57% {
+        color: blue;
+    }
+    71% {
+        color: indigo;
+    }
+    85% {
+        color: violet;
+    }
+    100% {
+        color: red;
+    }
+}
+
+/* Apply the rainbow animation to elements with class "keyboard" */
+.keyboard {
+    animation: rainbow 6s linear infinite;
+}
+
+/* CSS for Upgrade Buttons */
+.upgrade {
+    font-size: 24px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.upgrade-label {
+    flex: 2; /* Adjust the width as needed */
+    margin-right: 10px;
+    text-align: right;
+}
+
+.upgrade-progress {
+    flex: 3; /* Adjust the width as needed */
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 24px;
+    width: 300px;
+    background-color: #ccc;
+    border-radius: 5px;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    width: 30px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+.upgrade-button {
+    margin-left: 10px;
+    padding: 0 10px;
+    height: 24px;
+    flex: 1;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upgrade-cost {
+    width: 125px;
+    margin-left: 10px;
+}
+
+/* Add this CSS for the warning block */
+.warning-block {
+    position: fixed;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Start with 0 opacity */
+    transition: opacity 1s; /* Add a smooth transition effect */
+    z-index: 999; /* Make sure it's above other elements */
+}
+
+.warning-text {
+    color: yellow;
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Add animation keyframes for the warning block */
+@keyframes expandWarning {
+    0% {
+        transform: scale(0.2); /* Start small */
+        opacity: 0; /* Start invisible */
+    }
+    50% {
+        transform: scale(1.2); /* Expand to 120% size */
+        opacity: 1; /* Fade in */
+    }
+    100% {
+        transform: scale(1); /* Back to original size */
+        opacity: 0; /* Fade out */
+    }
+}
+
+/* Style for the vertical switch */
+.vertical-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.vertical-switch p {
+    font-size: 18px; /* Adjust the font size to your preference */
+    vertical-align: middle;
+    line-height: 26px; /* Adjust the line height to center the text vertically */
+    margin: 0 auto 0 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; /* Adjust the width of the switch */
+    height: 26px; /* Adjust the height of the switch */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 26px; /* Adjust the border-radius to match the height for a rounder appearance */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* Adjust the height of the slider handle */
+    width: 18px; /* Adjust the width of the slider handle */
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    left: calc(100% - 22px); /* Adjust the left position to keep the handle inside */
+    transform: translateX(0); /* Reset the transform */
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Styles for the volume controls container */
+.volume-controls {
+    display: grid;
+    gap: 0; /* Adjust the gap between controls as needed */
+}
+
+/* Styles for the volume control section */
+.volume-control {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    height: 26px;
+}
+
+.volume-label {
+    flex: 50%;
+    font-size: 24px;
+    text-align: start;
+    line-height: 34px;
+    margin: 0;
+}
+
+.volume-label p {
+    font-size: 18px;
+    vertical-align: middle;
+    line-height: 26px;
+    margin: 0 auto 0 0;
+}
+
+.mute-button {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.volume-button {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.volume-icon {
+    vertical-align: middle;
+}
+
+.volume-slider {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+/* Style for the volume slider */
+.volume-slider-input {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: #ccc;
+    outline: none;
+}
+
+.volume-slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2196F3;
+    cursor: pointer;
+    transform: translateY(-7px);
+}
+
+.volume-slider-input::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2196F3;
+    cursor: pointer;
+    transform: translateY(-7px);
+}
+
+/* Style for the slider track */
+.volume-slider-input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.volume-slider-input::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #ccc;
+    border-radius: 3px;
+}
