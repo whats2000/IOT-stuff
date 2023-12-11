@@ -38,12 +38,12 @@ def read_serial_data(server):
         ser.close()
 
 # Create a WebSocket server
-server = WebsocketServer(host='127.0.0.1', port=9001)
-server.set_fn_new_client(new_client)
-server.set_fn_client_left(client_left)
+gameServer = WebsocketServer(host='127.0.0.1', port=9001)
+gameServer.set_fn_new_client(new_client)
+gameServer.set_fn_client_left(client_left)
 
 # Start the server in a separate thread
-threading.Thread(target=server.run_forever).start()
+threading.Thread(target=gameServer.run_forever).start()
 
 # Read data from serial in the main thread
-read_serial_data(server)
+read_serial_data(gameServer)
